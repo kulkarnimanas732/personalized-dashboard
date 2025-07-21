@@ -7,3 +7,4 @@ import { store } from './store/index' // ✅ correct import
 export default function Providers({ children }: { children: ReactNode }) {
   return <Provider store={store}>{children}</Provider>
 }
+

@@ -1,46 +1,43 @@
 'use client'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../store/index'
-import { setCategories, toggleTheme } from '../features/preferences/preferencesSlice'
+import Dashboard from '../Layout/Dashboard'
+import { useDispatch } from 'react-redux'
+import { clearFavorites } from '../features/favoritesSlice'
+import { signOut, useSession } from 'next-auth/react'
 
-const SettingsPanel = () => {
+export default function SettingsPage() {
   const dispatch = useDispatch()
-  const { selectedCategories, theme } = useSelector((state: RootState) => state.preferences)
-
-  const handleToggleCategory = (category: string) => {
-    const updated = selectedCategories.includes(category)
-      ? selectedCategories.filter(c => c !== category)
-      : [...selectedCategories, category]
-    dispatch(setCategories(updated))
-  }
+  const { data: session } = useSession()
 
   return (
-    <div className="p-4 border rounded-md shadow">
-      <h2 className="text-xl font-bold mb-2">Settings</h2>
-      <div className="mb-4">
-        <p className="mb-1 font-semibold">Select Categories:</p>
-        {['technology', 'sports', 'finance'].map((category) => (
-          <label key={category} className="block">
-            <input
-              type="checkbox"
-              checked={selectedCategories.includes(category)}
-              onChange={() => handleToggleCategory(category)}
-            />
-            <span className="ml-2">{category}</span>
-          </label>
-        ))}
+    <Dashboard>
+      <div className="p-6 space-y-6">
+        <h1 className="text-2xl font-bold">⚙️ Settings</h1>
+
+        {session?.user && (
+          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+            <h2 className="text-lg font-semibold mb-2">Account</h2>
+            <p><strong>Name:</strong> {session.user.name}</p>
+            <p><strong>Email:</strong> {session.user.email}</p>
+            <button
+              onClick={() => signOut()}
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              Logout
+            </button>
+          </div>
+        )}
+
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+          {/* <h2 className="text-lg font-semibold mb-2">App Preferences</h2> */}
+          <button
+            onClick={() => dispatch(clearFavorites())}
+            className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+          >
+            Clear All Favorites
+          </button>
+        </div>
       </div>
-      <div>
-        <button
-          onClick={() => dispatch(toggleTheme())}
-          className="px-3 py-1 bg-blue-600 text-white rounded"
-        >
-          Toggle Theme (Current: {theme})
-        </button>
-      </div>
-    </div>
+    </Dashboard>
   )
 }
-
-export default SettingsPanel

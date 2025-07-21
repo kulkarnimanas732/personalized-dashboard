@@ -1,20 +1,17 @@
-
-// This replaces _app.tsx in App Router
 import './globals.css'
-
-import Providers from './provider' // ✅ Import client wrapper
-
-// import { store } from './store/index'
+import AuthProvider from '@/components/AuthProvider'
+import ReduxProvider from '@/components/ReduxProvider'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Providers>
-          {children}
-        </Providers>
+        <ReduxProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   )
 }
-
