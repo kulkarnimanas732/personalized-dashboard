@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📰 Personalized Content Dashboard
 
-## Getting Started
+A fully responsive and dynamic **Personalized Content Dashboard** built using **Next.js**, **React**, **TypeScript**, **Redux Toolkit**, and **Tailwind CSS**. This dashboard allows users to view and interact with news, movie recommendations, and social content based on their preferences.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 [View Live App](https://personalized-dashboard-am1s.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **State Management**: Redux Toolkit + RTK Query
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Auth**: NextAuth.js with MongoDB
+- **Testing Ready**: Cypress, React Testing Library
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Features Implemented
 
-## Deploy on Vercel
+### ✅ Core Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **User Preferences** via Redux + LocalStorage
+- **Content Feed** from:
+  - ✅ News API (e.g. NewsAPI)
+  - ✅ Movie Recommendations (TMDB API)
+- **Content Cards**: Show image, title, source, date, buttons
+- **Favorites**: Add/remove content using ❤️ icon
+- **Search**: Debounced search with real-time results
+- **Drag-and-Drop**: Reorder cards using Framer Motion
+- **Dark Mode**: Toggle & persist across sessions
+- **Auth**: Simple login/register using credentials
+- **Responsive Layout**: Works across all screen sizes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+
